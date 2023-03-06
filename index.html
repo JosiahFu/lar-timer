@@ -59,11 +59,15 @@
         const target = new Date('2023-03-17 09:00:00');
         const update = () => {
             const now = new Date();
-            const diff = new Date(target - now);
-            document.getElementById('days').innerHTML = (diff.getUTCDate() - 1).toString().padStart(2, '0');
-            document.getElementById('hours').innerHTML = diff.getUTCHours().toString().padStart(2, '0');
-            document.getElementById('minutes').innerHTML = diff.getUTCMinutes().toString().padStart(2, '0');
-            document.getElementById('seconds').innerHTML = diff.getUTCSeconds().toString().padStart(2, '0');
+            const diff = target - now;
+            [['seconds', 1000], ['minutes', 60], ['hours', 60], ['days', 24]].forEach((e,i,a) => {
+                document.getElementById(e[0]).innerHTML = 
+                    Math.floor(
+                        diff /
+                        a.slice(0,i+1).reduce((s,e) => s*e[1], 1)
+                    ) %
+                    (a[i+1]?.[1] ?? Infinity)
+            }, 1000);
         };
 
         update();
