@@ -14,7 +14,8 @@
             justify-content: center;
             height: 100vh;
             color: white;
-            padding: 2em;
+            padding: 3em;
+            box-sizing: border-box
         }
 
         .time, .label {
@@ -24,7 +25,7 @@
         }
 
         .time {
-            font-size: 4em;
+            font-size: 5em;
         }
 
         .field {
@@ -33,7 +34,7 @@
         }
 
         .label {
-            font-size: 3em;
+            font-size: 4em;
         }
     </style>
 </head>
@@ -57,10 +58,10 @@
         const update = () => {
             const now = new Date();
             const diff = new Date(target - now);
-            document.getElementById('days').innerHTML = 12 * diff.getMonth() + diff.getDate();
-            document.getElementById('hours').innerHTML = diff.getHours();
-            document.getElementById('minutes').innerHTML = diff.getMinutes();
-            document.getElementById('seconds').innerHTML = diff.getSeconds();
+            document.getElementById('days').innerHTML = (12 * diff.getMonth() + diff.getDate()).toString().padStart(2, '0');
+            document.getElementById('hours').innerHTML = (diff.getHours()).toString().padStart(2, '0');
+            document.getElementById('minutes').innerHTML = (diff.getMinutes()).toString().padStart(2, '0');
+            document.getElementById('seconds').innerHTML = (diff.getSeconds()).toString().padStart(2, '0');
         };
 
         update();
