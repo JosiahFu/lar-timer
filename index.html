@@ -60,10 +60,10 @@
         const update = () => {
             const now = new Date();
             const diff = new Date(target - now);
-            document.getElementById('days').innerHTML = (12 * diff.getMonth() + diff.getDate()).toString().padStart(2, '0');
-            document.getElementById('hours').innerHTML = (diff.getHours()).toString().padStart(2, '0');
-            document.getElementById('minutes').innerHTML = (diff.getMinutes()).toString().padStart(2, '0');
-            document.getElementById('seconds').innerHTML = (diff.getSeconds()).toString().padStart(2, '0');
+            document.getElementById('days').innerHTML = (diff.getUTCDate() - 1).toString().padStart(2, '0');
+            document.getElementById('hours').innerHTML = diff.getUTCHours().toString().padStart(2, '0');
+            document.getElementById('minutes').innerHTML = diff.getUTCMinutes().toString().padStart(2, '0');
+            document.getElementById('seconds').innerHTML = diff.getUTCSeconds().toString().padStart(2, '0');
         };
 
         update();
