@@ -47,6 +47,7 @@
             background-color: #0000002f;
             padding: 0.1em 0.2em;
             border-radius: 0.1em;
+            font-family: monospace;
         }
 
     </style>
@@ -79,7 +80,7 @@
                         a.slice(0, i + 1).reduce((s, e) => s * e[1], 1)
                     ) %
                         (a[i + 1]?.[1] ?? Infinity))
-                        .toString().padStart(2, '0');
+                        .toString().padStart(2, '0').replaceAll('0', 'O');
             }, 1000);
         };
 
